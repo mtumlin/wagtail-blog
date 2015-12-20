@@ -9,11 +9,11 @@ from wagtail.wagtailsearch import index
 
 class BlogPage(Page):
     main_image = models.ForeignKey(
-        'wagtailimages.Image',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
+            'wagtailimages.Image',
+            null=True,
+            blank=True,
+            on_delete=models.SET_NULL,
+            related_name='+'
     )
     date = models.DateField("Post date")
     intro = models.CharField(max_length=250)
@@ -29,4 +29,12 @@ class BlogPage(Page):
         ImageChooserPanel('main_image'),
         FieldPanel('intro'),
         FieldPanel('body'),
+    ]
+
+
+class BlogIndexPage(Page):
+    intro = RichTextField(blank=True)
+
+    content_panels = Page.content_panels + [
+        FieldPanel('intro', classname="full")
     ]
