@@ -10,11 +10,9 @@
     <div class="intro">{{ page.intro|richtext }}</div>
 
     {% for blog_post in self.get_children.specific %}
-        <a href="{{  blog_post.url  }}">
+            <a href="{{  blog_post.url  }}"><h3>{{ blog_post.title }}</h3></a>
             {% image blog_post.main_image width-400 %}
-            {{ blog_post.title }}
-            {{ blog_post.intro }}
-        </a>
+            <p>{{ blog_post.intro }}</p>
     {% endfor %}
 
 {% endblock %}
