@@ -21,7 +21,7 @@ class BlogPage(Page):
             related_name='+'
     )
     date = models.DateField("Post date")
-    intro = models.CharField(max_length=250)
+    intro = models.CharField(max_length=250, null=True, blank=True)
     body = RichTextField(blank=True)
 
     search_fields = Page.search_fields + (

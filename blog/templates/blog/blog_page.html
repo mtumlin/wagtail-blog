@@ -16,12 +16,12 @@
 
     {{ page.body|richtext }}
 
-    <p>Related links</p>
-        {% if page.related_links.all %}
-        <ul>
-            {% for item in page.related_links.all %}
-                <li><a href="{{ item.link }}">{{ item.title }}</a></li>
-            {% endfor %}
+    {% if page.related_links.all %}
+        <p>Related links</p>
+            <ul>
+                {% for item in page.related_links.all %}
+                    <li><a href="{{ item.link }}">{{ item.title }}</a></li>
+                {% endfor %}
         </ul>
     {% endif %}
 
