@@ -23,6 +23,14 @@
     <body class="{% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
 
+        <h1>Blog about stuff</h1>
+        <div class="nav-main">
+            <a href="/">Home</a>
+            {% for page in request.site.root_page.get_children.specific %}
+                <a href="{{  page.url  }}">{{ page.title }}</a>
+            {%  endfor %}
+        </div>
+        <hr/>
         {% block content %}{% endblock %}
 
         {# Global javascript #}
