@@ -10,7 +10,7 @@ def get_env_variable(var_name):
         error_msg = "Set the %s environment variable" % var_name
         raise ImproperlyConfigured(error_msg)
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = False
 SECRET_KEY = get_env_variable('SECRET_KEY')
 DATABASES['default'] = dj_database_url.config()
