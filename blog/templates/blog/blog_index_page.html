@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
 {% block body_class %}template-blogindexpage{% endblock %}
 
@@ -9,11 +9,12 @@
 
     <div class="intro">{{ page.intro|richtext }}</div>
 
-    {% if page.related_links.all %}
-        <ul>
-            {% for item in page.related_links.all %}
-                <li><a href="{{ item.link }}">{{ item.title }}</a></li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+    {% for blog_post in self.get_children.specific %}
+        <a href="{{  blog_post.url  }}">
+            {% image blog_post.main_image width-400 %}
+            {{ blog_post.title }}
+            {{ blog_post.intro }}
+        </a>
+    {% endfor %}
+
 {% endblock %}

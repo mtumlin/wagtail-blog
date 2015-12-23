@@ -34,6 +34,7 @@ class BlogPage(Page):
         ImageChooserPanel('main_image'),
         FieldPanel('intro'),
         FieldPanel('body'),
+        InlinePanel('related_links', label="Related links")
     ]
 
 
@@ -78,10 +79,9 @@ class BlogIndexPage(Page):
     intro = RichTextField(blank=True)
 
     content_panels = Page.content_panels + [
-        FieldPanel('intro', classname="full"),
-        InlinePanel('related_links', label="Related links"),
+        FieldPanel('intro', classname="full")
     ]
 
 
 class BlogIndexRelatedLink(Orderable, RelatedLink):
-    page = ParentalKey('BlogIndexPage', related_name='related_links')
+    page = ParentalKey('BlogPage', related_name='related_links')
